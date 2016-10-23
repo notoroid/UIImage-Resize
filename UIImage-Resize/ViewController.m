@@ -49,8 +49,10 @@
                 [_images addObject:resizedImage];
             }
             completion:^{
-                _files = files;
-                [self.tableView reloadData];
+                if( _images.count == files.count ){
+                    _files = files;
+                    [self.tableView reloadData];
+                }
             }
          ];
     }];

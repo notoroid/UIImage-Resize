@@ -194,7 +194,7 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                         obj.filename = filename;
                         obj.mine = mine;
                         
-                        if( completion != nil ){
+                        if( progress != nil ){
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 progress(data,obj);
                             });
