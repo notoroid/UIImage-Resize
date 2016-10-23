@@ -179,13 +179,13 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                             case IDPImageFormatTypeJpeg:
                             {
                                 filename = [filename stringByAppendingString:@"jpg"];
-                                mine = kUTTypeJPEG;
+                                mine = (__bridge NSString *)kUTTypeJPEG;
                             }
                                 break;
                             case IDPImageFormatTypePng:
                             {
                                 filename = [filename stringByAppendingString:@"png"];
-                                mine = kUTTypePNG;
+                                mine = (__bridge NSString *)kUTTypePNG;
                             }
                                 break;
                             default:
