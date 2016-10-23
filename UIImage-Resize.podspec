@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "UIImage+Resize"
+  s.name         = "UIImage-Resize"
   s.version      = "0.0.1"
   s.summary      = "UIImage + Resize is a middleware that provides a resize function for UIImage using CoreImage."
 
