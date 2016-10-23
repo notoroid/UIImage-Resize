@@ -61,6 +61,25 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
     return imageFormatType;
 }
 
++ (NSString * _Nullable) filenameWithPath:(nonnull NSString *)path
+{
+    NSString *lowcaseExtension = path.pathExtension.lowercaseString;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSError *error = nil;
+    NSDictionary<NSFileAttributeKey, id> *attributes = [fileManager attributesOfItemAtPath:path error:&error];
+    //            NSLog(@"attributes=%@",attributes);
+    
+    NSString *fileStamp = [@[path,attributes.description] componentsJoinedByString:@" "];
+    //            NSLog(@"fileStamp=%@",fileStamp);
+    
+    NSData *dataFileStamp = [fileStamp dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *hash = dataFileStamp.encryptToMD5;
+    
+    return [hash stringByAppendingPathExtension:lowcaseExtension];
+}
+
 @end
 
 @implementation UIImage (IDResize)
@@ -191,7 +210,9 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                             default:
                                 break;
                         }
-                        obj.filename = filename;
+                        if( obj.filename == nil ){
+                            obj.filename = filename;
+                        }
                         obj.mine = mine;
                         
                         if( progress != nil ){

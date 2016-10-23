@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger,IDPImageFormatType)
 + (instancetype _Nonnull)resizeOptionWithSize:(CGSize)size;
 + (instancetype _Nonnull)resizeOptionWithSize:(CGSize)size scale:(CGFloat)scale;
 + (IDPImageFormatType) imageFormatTypeWithPath:(nonnull NSString *)path;
++ (NSString * _Nullable) filenameWithPath:(nonnull NSString *)path;
 
 @property (readonly,nonatomic) CGSize size;
 @property (readonly,nonatomic) CGFloat scale;
