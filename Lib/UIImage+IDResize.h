@@ -22,7 +22,6 @@ typedef NS_ENUM(NSInteger,IDPImageFormatType)
 
 @property (readonly,nonatomic) CGSize size;
 @property (readonly,nonatomic) CGFloat scale;
-//@property (copy,nonatomic,nullable) NSString *originalFilename;
 @property (copy,nonatomic,nullable) NSString *filename;
 @property (copy,nonatomic,nullable) NSString *mine;
 @property (assign,nonatomic) IDPImageFormatType imageFormatType;
@@ -31,7 +30,7 @@ typedef NS_ENUM(NSInteger,IDPImageFormatType)
 
 @interface UIImage (IDResize)
 
-- (void) resizeWithOptions:(NSArray<IDPResizeOption *> * _Nonnull)options completion: (void (^ __nonnull)(NSData * __nullable data,IDPResizeOption * __nonnull option))completion;
+- (void) resizeWithOptions:(NSArray<IDPResizeOption *> * _Nonnull)options progress: (void (^ __nonnull)(NSData * __nullable data,IDPResizeOption * __nonnull option))progress completion:(void (^ __nullable)())completion;
 + (void) resetAllResizing;
 
 @end

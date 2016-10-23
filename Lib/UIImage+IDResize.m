@@ -81,7 +81,7 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
     [s_operationQueueIDPResize cancelAllOperations];
 }
 
-- (void) resizeWithOptions:(NSArray<IDPResizeOption *> * _Nonnull)options completion: (void (^ __nonnull)(NSData * __nullable data,IDPResizeOption * __nonnull option))completion
+- (void) resizeWithOptions:(NSArray<IDPResizeOption *> * _Nonnull)options progress: (void (^ __nonnull)(NSData * __nullable data,IDPResizeOption * __nonnull option))progress completion:(void (^ __nullable)())completion
 {
     @autoreleasepool {
         CIImage *sourceImage = [[CIImage alloc] initWithCGImage:self.CGImage options:nil];
@@ -200,13 +200,24 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                                 completion(data,obj);
                             });
                         }
-                        
                     }
                 }
             }];
             
             [s_operationQueueIDPResize addOperation:blockOperation];
         }];
+        
+        if( completion != nil ){
+            [s_operationQueueIDPResize addOperationWithBlock:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion();
+                });
+            }];
+        }
+        
+        
+        
+        
     }
     
 }
