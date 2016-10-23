@@ -196,7 +196,7 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                         
                         if( completion != nil ){
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                completion(data,obj);
+                                progress(data,obj);
                             });
                         }
                     }
