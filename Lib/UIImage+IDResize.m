@@ -11,6 +11,7 @@
 @import ImageIO;
 @import AVFoundation;
 #import "NSData+MD5.h"
+@import MobileCoreServices;
 
 NSOperationQueue *s_operationQueueIDPResize = nil;
 
@@ -174,21 +175,25 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                         
                         // ファイル名を決定
                         NSString *filename = [data encryptToMD5];
+                        NSString *mine = nil;
                         switch (obj.imageFormatType) {
                             case IDPImageFormatTypeJpeg:
                             {
                                 filename = [filename stringByAppendingString:@"jpg"];
+                                mine = kUTTypeJPEG;
                             }
                                 break;
                             case IDPImageFormatTypePng:
                             {
                                 filename = [filename stringByAppendingString:@"png"];
+                                mine = kUTTypePNG;
                             }
                                 break;
                             default:
                                 break;
                         }
                         obj.filename = filename;
+                        obj.mine = mine;
                         
                         if( completion != nil ){
                             dispatch_async(dispatch_get_main_queue(), ^{

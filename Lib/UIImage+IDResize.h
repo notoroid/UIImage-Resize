@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger,IDPImageFormatType)
 @property (readonly,nonatomic) CGFloat scale;
 //@property (copy,nonatomic,nullable) NSString *originalFilename;
 @property (copy,nonatomic,nullable) NSString *filename;
+@property (copy,nonatomic,nullable) NSString *mine;
 @property (assign,nonatomic) IDPImageFormatType imageFormatType;
 @property (assign,nonatomic) NSUInteger tag;
 @end
