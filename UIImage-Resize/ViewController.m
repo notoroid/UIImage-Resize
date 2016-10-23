@@ -44,15 +44,15 @@
         
         NSData *data = [NSData dataWithContentsOfFile:obj];
         UIImage *imaeg = [UIImage imageWithData:data];
-        [imaeg resizeWithOptions:@[resizeOption] completion:^(NSData * _Nullable data, IDPResizeOption * _Nonnull option) {
-            UIImage *resizedImage = [UIImage imageWithData:data];
-            [_images addObject:resizedImage];
-            
-            if( _images.count == files.count ){
+        [imaeg resizeWithOptions:@[resizeOption] progress:^(NSData * _Nullable data, IDPResizeOption * _Nonnull option) {
+                UIImage *resizedImage = [UIImage imageWithData:data];
+                [_images addObject:resizedImage];
+            }
+            completion:^{
                 _files = files;
                 [self.tableView reloadData];
             }
-        }];
+         ];
     }];
     
     
