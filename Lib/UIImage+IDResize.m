@@ -8,7 +8,6 @@
 
 #import "UIImage+IDResize.h"
 @import CoreImage;
-@import ImageIO;
 @import AVFoundation;
 #import "NSData+MD5.h"
 @import MobileCoreServices;
