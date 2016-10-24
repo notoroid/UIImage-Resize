@@ -47,6 +47,26 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
     return resizeOption;
 }
 
++ (NSString * _Nullable) mineWithPath:(IDPImageFormatType) imageFormatType
+{
+    NSString *mine = nil;
+    switch (imageFormatType) {
+        case IDPImageFormatTypeJpeg:
+        {
+            mine = (__bridge NSString *)kUTTypeJPEG;
+        }
+            break;
+        case IDPImageFormatTypePng:
+        {
+            mine = (__bridge NSString *)kUTTypePNG;
+        }
+            break;
+        default:
+            break;
+    }
+    return mine;
+}
+
 + (IDPImageFormatType) imageFormatTypeWithPath:(nonnull NSString *)path
 {
     NSString *lowcaseExtension = path.pathExtension.lowercaseString;
