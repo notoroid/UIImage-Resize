@@ -197,13 +197,13 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
                         switch (obj.imageFormatType) {
                             case IDPImageFormatTypeJpeg:
                             {
-                                filename = [filename stringByAppendingString:@"jpg"];
+                                filename = [filename stringByAppendingPathExtension:@"jpg"];
                                 mine = (__bridge NSString *)kUTTypeJPEG;
                             }
                                 break;
                             case IDPImageFormatTypePng:
                             {
-                                filename = [filename stringByAppendingString:@"png"];
+                                filename = [filename stringByAppendingPathExtension:@"png"];
                                 mine = (__bridge NSString *)kUTTypePNG;
                             }
                                 break;
