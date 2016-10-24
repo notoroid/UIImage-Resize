@@ -47,7 +47,7 @@ NSOperationQueue *s_operationQueueIDPResize = nil;
     return resizeOption;
 }
 
-+ (NSString * _Nullable) mineWithPath:(IDPImageFormatType) imageFormatType
++ (NSString * _Nullable) mineWithImageFormatType:(IDPImageFormatType) imageFormatType
 {
     NSString *mine = nil;
     switch (imageFormatType) {
